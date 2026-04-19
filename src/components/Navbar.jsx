@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 
-const Navbar = () => {
-  const [active, setActive] = useState("");
+const Navbar = ({ activeTab, setActiveTab }) => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,17 +26,15 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
+      } w-full flex items-center py-5 relative z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
       <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
-        <Link
-          to='/'
-          className='flex items-center gap-2'
+        <div
+          className='flex items-center gap-2 cursor-pointer'
           onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
+            setActiveTab("hero");
           }}
         >
           <img src='https://raw.githubusercontent.com/adrianhajdin/project_3d_developer_portfolio/main/src/assets/logo.svg' alt='logo' className='w-9 h-9 object-contain' />
@@ -46,18 +42,18 @@ const Navbar = () => {
             Kencalvin &nbsp;
             <span className='sm:block hidden'> | Mwenda</span>
           </p>
-        </Link>
+        </div>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+                activeTab === nav.id ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer transition-colors`}
+              onClick={() => setActiveTab(nav.id)}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+              {nav.title}
             </li>
           ))}
         </ul>
@@ -66,7 +62,7 @@ const Navbar = () => {
           <img
             src={toggle ? "https://raw.githubusercontent.com/adrianhajdin/project_3d_developer_portfolio/main/src/assets/close.svg" : "https://raw.githubusercontent.com/adrianhajdin/project_3d_developer_portfolio/main/src/assets/menu.svg"}
             alt='menu'
-            className='w-[28px] h-[28px] object-contain'
+            className='w-[28px] h-[28px] object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)}
           />
 
@@ -80,14 +76,14 @@ const Navbar = () => {
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
+                    activeTab === nav.id ? "text-white" : "text-secondary"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);
-                    setActive(nav.title);
+                    setActiveTab(nav.id);
                   }}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  {nav.title}
                 </li>
               ))}
             </ul>
