@@ -8,6 +8,25 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   color-scheme: dark;
+  cursor: none !important; /* Hide system cursor */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #915eff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #804dee;
 }
 
 .hash-span {

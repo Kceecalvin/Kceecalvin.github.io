@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
+import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, Feedbacks } from "./components";
+import CustomCursor from "./components/CustomCursor";
+import SocialSidebar from "./components/SocialSidebar";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("hero");
@@ -23,6 +25,8 @@ const App = () => {
             <Works />
           </div>
         );
+      case "reviews":
+        return <Feedbacks key="reviews" />;
       case "contact":
         return <Contact key="contact" />;
       default:
@@ -32,6 +36,8 @@ const App = () => {
 
   return (
     <div className='relative z-0 bg-primary w-screen h-screen overflow-hidden flex flex-col'>
+      <CustomCursor />
+      <SocialSidebar />
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="flex-1 relative z-0">

@@ -2,14 +2,52 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { textVariant } from "../utils/motion";
+import { fadeIn, textVariant } from "../utils/motion";
+import { testimonials } from "../constants";
+
+const FeedbackCard = ({
+  index,
+  testimonial,
+  name,
+  designation,
+  company,
+  image,
+}) => (
+  <motion.div
+    variants={fadeIn("", "spring", index * 0.5, 0.75)}
+    className='bg-black-200 p-10 rounded-3xl xs:w-[320px] w-full border border-white/10 backdrop-blur-sm bg-opacity-40'
+  >
+    <p className='text-white font-black text-[48px]'>"</p>
+
+    <div className='mt-1'>
+      <p className='text-white tracking-wider text-[18px]'>{testimonial}</p>
+
+      <div className='mt-7 flex justify-between items-center gap-1'>
+        <div className='flex-1 flex flex-col'>
+          <p className='text-white font-medium text-[16px]'>
+            <span className='blue-text-gradient'>@</span> {name}
+          </p>
+          <p className='mt-1 text-secondary text-[12px]'>
+            {designation} of {company}
+          </p>
+        </div>
+
+        <img
+          src={image}
+          alt={`feedback_by-${name}`}
+          className='w-10 h-10 rounded-full object-cover'
+        />
+      </div>
+    </div>
+  </motion.div>
+);
 
 const Feedbacks = () => {
   return (
-    <div className={`${styles.paddingX} py-10`}>
-      <div className={`mt-12 bg-black-100/40 backdrop-blur-md rounded-[20px] border border-white/10`}>
+    <div className={`${styles.paddingX} py-10 overflow-y-auto h-full`}>
+      <div className={`bg-tertiary/20 rounded-2xl border border-white/5`}>
         <div
-          className={`bg-tertiary/50 rounded-2xl ${styles.padding} min-h-[300px]`}
+          className={`bg-black-100/40 rounded-2xl ${styles.padding} min-h-[300px]`}
         >
           <motion.div variants={textVariant()}>
             <p className={styles.sectionSubText}>What others say</p>
@@ -17,7 +55,9 @@ const Feedbacks = () => {
           </motion.div>
         </div>
         <div className={`-mt-20 pb-14 ${styles.padding} flex flex-wrap gap-7`}>
-          <p className='text-white text-[18px]'>No testimonials available yet.</p>
+          {testimonials.map((testimonial, index) => (
+            <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
+          ))}
         </div>
       </div>
     </div>

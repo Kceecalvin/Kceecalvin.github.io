@@ -22,6 +22,20 @@ const Hero = () => {
             I develop 3D visuals, user <br className='sm:block hidden' />
             interfaces and web applications
           </p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="mt-8 pointer-events-auto"
+          >
+            <a
+              href="#"
+              className="bg-[#915eff] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:bg-[#804dee] transition-all inline-block border-2 border-[#915eff] hover:border-white"
+            >
+              Download CV
+            </a>
+          </motion.div>
         </div>
       </div>
 
