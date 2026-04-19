@@ -24,17 +24,16 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: Kceecalvin.github.io/package-lock.json
       - name: Install dependencies
-        run: cd Kceecalvin.github.io && npm install --legacy-peer-deps
+        run: npm install --legacy-peer-deps
       - name: Build
-        run: cd Kceecalvin.github.io && npm run build
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Kceecalvin.github.io/dist
+          path: ./dist
 
   deploy:
     environment:
