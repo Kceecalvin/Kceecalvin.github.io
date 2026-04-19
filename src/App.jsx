@@ -38,6 +38,7 @@ const App = () => {
     <div className='relative z-0 bg-primary w-screen h-screen overflow-hidden flex flex-col'>
       <CustomCursor />
       <SocialSidebar />
+      <AIChatbot />
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="flex-1 relative z-0">
