@@ -89,7 +89,7 @@ const About = () => {
         {/* Education */}
         <BentoCard className="md:col-span-2" delay={0.5}>
            <div className="flex items-center gap-4 w-full">
-             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-2xl">🎓</div>
+             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-[#915eff]"><GraduationCap size={24} /></div>
              <div className="text-left">
                <h4 className="text-white font-bold text-sm">BSc. Software Engineering</h4>
                <p className="text-secondary text-xs italic">Kirinyaga University</p>
@@ -101,5 +101,8 @@ const About = () => {
     </div>
   );
 };
+
+export default About;
+;
 
 export default About;

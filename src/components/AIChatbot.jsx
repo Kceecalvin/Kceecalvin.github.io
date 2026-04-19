@@ -104,12 +104,13 @@ const AIChatbot = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#915eff] rounded-full shadow-lg shadow-primary flex items-center justify-center text-2xl"
+        className="w-14 h-14 bg-[#915eff] rounded-full shadow-lg shadow-primary flex items-center justify-center text-white"
       >
-        {isOpen ? "✕" : "🤖"}
+        {isOpen ? <X size={24} /> : <Bot size={24} />}
       </motion.button>
     </div>
   );
 };
 
 export default AIChatbot;
+ault AIChatbot;
