@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, Feedbacks } from "./components";
+import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas, Feedbacks, AIChatbot } from "./components";
 import CustomCursor from "./components/CustomCursor";
 import SocialSidebar from "./components/SocialSidebar";
 
