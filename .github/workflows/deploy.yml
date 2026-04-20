@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
       - name: Build
-        run: npm run build -- --legacy-peer-deps
+        run: CI=false npm run build -- --legacy-peer-deps
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
