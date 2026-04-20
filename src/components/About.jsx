@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
+import { MapPin, GraduationCap } from "lucide-react";
 import { styles } from "../styles";
 import { fadeIn, textVariant } from "../utils/motion";
 
@@ -46,7 +47,9 @@ const About = () => {
 
         {/* Location */}
         <BentoCard className="md:col-span-1" delay={0.2}>
-          <div className="text-4xl mb-2">📍</div>
+          <div className="text-[#915eff] mb-2">
+            <MapPin size={40} />
+          </div>
           <h4 className="text-white font-bold">Location</h4>
           <p className="text-secondary text-xs">Based in Kirinyaga, Kenya</p>
           <div className="w-full h-1 bg-white/5 rounded-full mt-4 overflow-hidden">
@@ -89,7 +92,9 @@ const About = () => {
         {/* Education */}
         <BentoCard className="md:col-span-2" delay={0.5}>
            <div className="flex items-center gap-4 w-full">
-             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-[#915eff]"><GraduationCap size={24} /></div>
+             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-[#915eff]">
+               <GraduationCap size={24} />
+             </div>
              <div className="text-left">
                <h4 className="text-white font-bold text-sm">BSc. Software Engineering</h4>
                <p className="text-secondary text-xs italic">Kirinyaga University</p>
@@ -101,8 +106,5 @@ const About = () => {
     </div>
   );
 };
-
-export default About;
-;
 
 export default About;
