@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CALDEV Engineering Studio
 
-## Getting Started
+A tier-one digital studio platform built with Next.js 14+, TypeScript, and Tailwind CSS. Designed for zero-latency, high-performance visual impact.
 
-First, run the development server:
+## System Architecture
 
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS (Modern CSS-first configuration)
+- **Animation:** Framer Motion (Hardware-accelerated)
+- **Type Safety:** Strict TypeScript
+
+## Core Pillars
+
+1. **Financial Logic:** Algorithmic signaling and XAUUSD/BTC processing.
+2. **Physical Systems:** IoT Embedded logic and secure API payloads.
+3. **Business Operations:** Commercial acreage management and operational mathematics.
+
+## Development
+
+### Setup
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run Development Server
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+The project is optimized for deployment on **Vercel**.
+1. Push the code to a GitHub repository.
+2. Connect the repository to Vercel.
+3. Vercel will automatically build and deploy the project to its global edge network.
 
-To learn more about Next.js, take a look at the following resources:
+## Updating Portfolio Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To update the engineering case studies, modify the data in `src/lib/data.ts`. The changes will be automatically picked up by the static generation process during the next build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+**LOGIC IS ABSOLUTE**
