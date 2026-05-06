@@ -27,16 +27,16 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto">
         
         {/* Inspiration Header Style */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-24 items-start">
           <div>
             <span className="text-primary-orange font-black text-xs uppercase tracking-[0.3em] mb-6 block">Behind the Engineering</span>
-            <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] uppercase">
+            <h2 className="text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] uppercase">
               Shaping Systems <br /> 
               That Scale
             </h2>
           </div>
           <div className="lg:pt-20">
-            <p className="text-white/50 text-xl lg:text-2xl font-medium leading-relaxed mb-10 max-w-lg">
+            <p className="text-white/50 text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed mb-10 max-w-lg">
               I specialize in designing clean, high-performance architectures that solve real-world problems through deterministic logic.
             </p>
             <Link href="/cv" className="flex items-center gap-4 text-white font-bold group cursor-pointer">
@@ -51,7 +51,7 @@ export default function Portfolio() {
         </div>
 
         {/* Project Grid - Vertical Rounded Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
           {works.map((work, i) => (
             <motion.div 
               key={i}
@@ -60,7 +60,7 @@ export default function Portfolio() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.2 }}
               whileHover={{ y: -20 }}
-              className="relative aspect-[3/4] rounded-[60px] overflow-hidden group cursor-pointer border border-white/5"
+              className="relative aspect-[3/4] rounded-[40px] sm:rounded-[60px] overflow-hidden group cursor-pointer border border-white/5"
             >
               <img 
                 src={work.image} 
@@ -69,9 +69,9 @@ export default function Portfolio() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               
-              <div className="absolute bottom-12 left-12 right-12">
-                <span className="text-xs font-black text-primary-orange uppercase tracking-widest mb-3 block">{work.category}</span>
-                <h3 className="text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-primary-orange transition-colors">
+              <div className="absolute bottom-8 sm:bottom-12 left-8 sm:left-12 right-8 sm:right-12">
+                <span className="text-[10px] sm:text-xs font-black text-primary-orange uppercase tracking-widest mb-2 sm:mb-3 block">{work.category}</span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tighter uppercase leading-none group-hover:text-primary-orange transition-colors">
                   {work.title}
                 </h3>
               </div>

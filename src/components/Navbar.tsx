@@ -14,22 +14,22 @@ export default function Navbar() {
       style={{ width, y }}
       className="fixed top-0 left-1/2 -translate-x-1/2 z-[100] px-6 py-4"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-nav px-8 py-3 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-        <Link href="/" className="flex items-center gap-6 group">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass-nav px-4 sm:px-8 py-3 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+        <Link href="/" className="flex items-center gap-3 sm:gap-6 group">
           <div className="relative flex items-center justify-center transition-folio">
             <Image 
               src="/assets/logo.svg" 
               alt="Cal dev Logo" 
               width={60} 
               height={60} 
-              className="w-14 h-14 invert group-hover:scale-110 transition-transform brightness-200"
+              className="w-10 h-10 sm:w-14 sm:h-14 invert group-hover:scale-110 transition-transform brightness-200"
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-[-0.05em] text-white uppercase leading-none">
+            <span className="text-xl sm:text-2xl font-black tracking-[-0.05em] text-white uppercase leading-none">
               Cal <span className="text-primary-orange">dev</span>
             </span>
-            <span className="text-[8px] font-black tracking-[0.5em] text-white/20 uppercase mt-1">Engineering</span>
+            <span className="text-[7px] sm:text-[8px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-white/20 uppercase mt-1">Engineering</span>
           </div>
         </Link>
 
