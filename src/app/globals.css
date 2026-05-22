@@ -8,6 +8,83 @@
   
   --background: var(--color-deep-dark);
   --foreground: #FFFFFF;
+
+  --font-sans: 'Jost', sans-serif;
+  --font-serif: 'Bodoni Moda', serif;
+  --font-jost: 'Jost', sans-serif;
+  --font-bodoni: 'Bodoni Moda', serif;
+
+  /* Premium SaaS Design Tokens */
+  --color-proof-bg-base: #08080C;
+  --color-proof-bg-panel: #111017;
+  --color-proof-bg-panel-2: #17151F;
+  --color-proof-bg-inset: #1C1A26;
+  --color-proof-border-subtle: #26222F;
+  --color-proof-border-glow: #3A3349;
+  --color-proof-text-primary: #F5F4F8;
+  --color-proof-text-secondary: #8A8794;
+  --color-proof-text-muted: #54515E;
+  --color-proof-accent-orange: #FF6B1F;
+  --color-proof-accent-green: #2BD673;
+  --color-proof-accent-violet: #6B5BFF;
+
+  --animate-ripple: ripple 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+
+  /* Cinematic Disciplines Design Tokens */
+  --color-disp-bg-base: #06060A;
+  --color-disp-bg-panel: #0E0D14;
+  --color-disp-bg-panel-hi: #14121C;
+  --color-disp-bg-inset: #1A1724;
+  --color-disp-border-faint: #221E2D;
+  --color-disp-border-warm: #3A2A1E;
+  --color-disp-text-primary: #F6F5F9;
+  --color-disp-text-secondary: #A09DAE;
+  --color-disp-text-muted: #6A6776;
+  --color-disp-accent-orange: #FF6A1A;
+  --color-disp-accent-amber: #FFB347;
+  --color-disp-accent-deep: #B5380A;
+
+  --animate-mesh-drift-1: mesh-drift-1 25s ease-in-out infinite;
+  --animate-mesh-drift-2: mesh-drift-2 20s ease-in-out infinite;
+  --animate-scanline: scanline-drift 8s linear infinite;
+  --animate-heartbeat: heartbeat 2s ease-in-out infinite;
+  --animate-conic-rotate: conic-rotate 12s linear infinite;
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes mesh-drift-1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(60px, -80px) scale(1.15); }
+  }
+
+  @keyframes mesh-drift-2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50% { transform: translate(-80px, 60px) scale(0.9); }
+  }
+
+  @keyframes scanline-drift {
+    0% { transform: translateY(-20%); }
+    100% { transform: translateY(120vh); }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  @keyframes conic-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
 :root {
@@ -15,15 +92,39 @@
   --deep-dark: #000000;
   --surface: #0A0A0A;
   --muted: #404040;
+  --font-jost: 'Jost', sans-serif;
+  --font-bodoni: 'Bodoni Moda', serif;
 }
 
 @layer base {
   body {
     background-color: var(--deep-dark);
     color: #FFFFFF;
-    font-family: var(--font-manrope);
+    font-family: 'Jost', sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11", "liga";
   }
+}
+
+/* Lenis scroll settings */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* Fluid Architecture Utilities */
@@ -42,6 +143,27 @@
   mix-blend-mode: plus-lighter;
 }
 
+@utility hardware-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@utility diagonal-noise {
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 4px);
+}
+
+@utility proof-radial-bg {
+  background: radial-gradient(circle at top, #0E0B18 0%, #08080C 100%);
+}
+
+@utility grid-overlay {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(26, 23, 36, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 23, 36, 0.04) 1px, transparent 1px);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -56,3 +178,4 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-orange);
 }
+

@@ -34,17 +34,18 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-10">
-          <Link href="#about" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">About</Link>
-          <Link href="#services" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Services</Link>
-          <Link href="#portfolio" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Portfolio</Link>
-          <Link href="/cv" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">CV</Link>
+          <Link href="#about" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">The Practice</Link>
+          <Link href="#services" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Capabilities</Link>
+          <Link href="#portfolio" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Selected Work</Link>
+          <Link href="/insights" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Insights</Link>
+          <Link href="/cv" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">The Principal</Link>
         </div>
 
         <Link 
           href="#contact" 
           className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-primary-orange hover:text-white transition-folio"
         >
-          <span className="hidden md:block">Get in touch</span>
+          <span className="hidden md:block">Begin Engagement</span>
           <div className="w-5 h-5 bg-primary-orange group-hover:bg-white rounded-full flex items-center justify-center transition-folio">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>

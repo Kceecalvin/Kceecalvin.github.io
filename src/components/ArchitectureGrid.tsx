@@ -5,42 +5,42 @@ import Link from 'next/link';
 
 const works = [
   {
-    title: 'Algorithmic Financial Engine',
-    category: 'Fintech Strategy',
-    image: 'https://images.unsplash.com/photo-1640341719942-0570b5b71948?q=80&w=2832&auto=format&fit=crop'
+    title: 'Sovereign Algorithmic Clearing Engine',
+    category: 'Capital Systems Advisory',
+    image: '/assets/sovereign_algorithmic.png'
   },
   {
-    title: 'Smart Infrastructure Relay',
-    category: 'IoT Engineering',
+    title: 'Industrial Edge Abstraction Network',
+    category: 'Embedded Engineering',
     image: 'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2940&auto=format&fit=crop'
   },
   {
-    title: 'Commercial Ops Dashboard',
-    category: 'Systems Management',
+    title: 'Enterprise Resource Decision Center',
+    category: 'Scalable Platforms',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop'
   }
 ];
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-40 px-6">
+    <section id="portfolio" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
         
         {/* Inspiration Header Style */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-24 items-start">
           <div>
-            <span className="text-primary-orange font-black text-xs uppercase tracking-[0.3em] mb-6 block">Behind the Engineering</span>
+            <span className="text-primary-orange font-black text-xs uppercase tracking-[0.3em] mb-6 block">SELECTED COMMISSIONS</span>
             <h2 className="text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] uppercase">
-              Shaping Systems <br /> 
-              That Scale
+              ENGINEERING THE FUTURE <br /> 
+              OF ENTERPRISE INFRASTRUCTURE.
             </h2>
           </div>
           <div className="lg:pt-20">
             <p className="text-white/50 text-lg sm:text-xl lg:text-2xl font-medium leading-relaxed mb-10 max-w-lg">
-              I specialize in designing clean, high-performance architectures that solve real-world problems through deterministic logic.
+              Our practice focuses on delivering clean, resilient system designs that underwrite institutional success through unyielding operational logic.
             </p>
             <Link href="/cv" className="flex items-center gap-4 text-white font-bold group cursor-pointer">
-              <span className="border-b-2 border-primary-orange pb-1 group-hover:pr-4 transition-all uppercase tracking-widest text-sm">View CV</span>
+              <span className="border-b-2 border-primary-orange pb-1 group-hover:pr-4 transition-all uppercase tracking-widest text-sm">REVIEW PRINCIPAL PROFILE</span>
               <div className="w-8 h-8 rounded-full bg-primary-orange flex items-center justify-center group-hover:translate-x-2 transition-transform">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -82,3 +82,4 @@ export default function Portfolio() {
     </section>
   );
 }
+
