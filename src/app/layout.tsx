@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
 import "./globals.css";
 import GlobalBackground from "@/components/GlobalBackground";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
+import UtmCapturer from '@/components/UtmCapturer';
 
 export const metadata: Metadata = {
   title: "Caldev | Tier-One Systems Engineering",
@@ -14,6 +16,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'kceecalvin.github.io';
+
   return (
     <html lang="en" className="font-sans bg-black antialiased scroll-smooth">
       <head>
@@ -26,6 +30,12 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen selection:bg-primary-orange selection:text-white hardware-accelerated text-white overflow-x-hidden">
+        <Script
+          src="https://plausible.io/js/script.js"
+          data-domain={plausibleDomain}
+          strategy="afterInteractive"
+        />
+        <UtmCapturer />
         <SmoothScroll>
           <GlobalBackground />
           <CustomCursor />
@@ -35,4 +45,3 @@ export default function RootLayout({
     </html>
   );
 }
-

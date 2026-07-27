@@ -28,6 +28,16 @@ const engageSchema = z.object({
   type: z.string().max(100).optional().nullable(),
   timeline: z.string().max(100).optional().nullable(),
   budget: z.string().max(100).optional().nullable(),
+  utm: z.object({
+    utm_source: z.string().max(256).optional(),
+    utm_medium: z.string().max(256).optional(),
+    utm_campaign: z.string().max(256).optional(),
+    utm_term: z.string().max(256).optional(),
+    utm_content: z.string().max(256).optional(),
+    gclid: z.string().max(256).optional(),
+    referrer: z.string().max(2048).optional(),
+    first_seen_at: z.string().max(64).optional(),
+  }).optional().nullable(),
 });
 
 const allowedOrigins = [
@@ -79,7 +89,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: firstError }, { status: 400 });
     }
 
-    const { type, timeline, budget, email } = result.data;
+    const { type, timeline, budget, email, utm } = result.data;
 
     const typeLabel = projectTypes[type || ''] || type || 'Not Specified';
     const timelineLabel = timelines[timeline || ''] || timeline || 'Not Specified';
@@ -96,6 +106,7 @@ export async function POST(request: Request) {
       vector: typeLabel,
       timeline: timelineLabel,
       budget: budgetLabel,
+      utm,
       timestamp: currentDate
     });
 

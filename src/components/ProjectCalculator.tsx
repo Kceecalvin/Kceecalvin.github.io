@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Smartphone, Cpu, Cloud, ArrowRight, CheckCircle2, ChevronRight, Mail, X } from 'lucide-react';
+import { getStoredUtm } from '@/lib/utm';
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -50,6 +51,8 @@ export default function ProjectCalculator({ onClose }: { onClose?: () => void })
     const getTimelineLabel = (id: string) => timelines.find(t => t.id === id)?.label || id || 'Not Specified';
     const getBudgetLabel = (id: string) => budgets.find(b => b.id === id)?.label || id || 'Not Specified';
 
+    const storedUtm = getStoredUtm();
+
     try {
       const response = await fetch('/api/engage', {
         method: 'POST',
@@ -59,20 +62,22 @@ export default function ProjectCalculator({ onClose }: { onClose?: () => void })
           timeline: selection.timeline,
           budget: selection.budget,
           email: selection.email,
+          utm: storedUtm,
         }),
       });
 
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
+          trackEngagementConversion(storedUtm);
           setIsSuccess(true);
           return;
         }
       }
 
-      await triggerWeb3FormsFallback(getTypeLabel, getTimelineLabel, getBudgetLabel);
+      await triggerWeb3FormsFallback(getTypeLabel, getTimelineLabel, getBudgetLabel, storedUtm);
     } catch {
-      await triggerWeb3FormsFallback(getTypeLabel, getTimelineLabel, getBudgetLabel);
+      await triggerWeb3FormsFallback(getTypeLabel, getTimelineLabel, getBudgetLabel, storedUtm);
     } finally {
       setIsSubmitting(false);
     }
@@ -81,7 +86,8 @@ export default function ProjectCalculator({ onClose }: { onClose?: () => void })
   const triggerWeb3FormsFallback = async (
     getTypeLabel: (id: string) => string,
     getTimelineLabel: (id: string) => string,
-    getBudgetLabel: (id: string) => string
+    getBudgetLabel: (id: string) => string,
+    utm: ReturnType<typeof getStoredUtm>
   ) => {
     const web3Key = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
     if (!web3Key) {
@@ -120,6 +126,7 @@ Notice: This lead was routed via static client-side fallback (GitHub Pages deplo
 
       const data = await response.json();
       if (data.success) {
+        trackEngagementConversion(utm);
         setIsSuccess(true);
       } else {
         setError('Transmission failed. Client-side fallback gateway rejected request.');
@@ -127,6 +134,42 @@ Notice: This lead was routed via static client-side fallback (GitHub Pages deplo
     } catch {
       setError('Network communication error. Fallback mail server is unreachable.');
     }
+  };
+
+  const trackEngagementConversion = (utm: ReturnType<typeof getStoredUtm>) => {
+    const path = `${window.location.pathname}${window.location.search}`;
+
+    (window as Window & { plausible?: (eventName: string, options?: { props?: Record<string, string> }) => void })
+      .plausible?.('engagement_submitted', {
+        props: {
+          path,
+          utm_source: utm?.utm_source || '',
+          utm_medium: utm?.utm_medium || '',
+          utm_campaign: utm?.utm_campaign || '',
+          gclid: utm?.gclid || '',
+        },
+      });
+
+    void fetch('/api/track-conversion', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventName: 'engagement_submitted',
+        props: {
+          path,
+          utm_source: utm?.utm_source,
+          utm_medium: utm?.utm_medium,
+          utm_campaign: utm?.utm_campaign,
+          utm_term: utm?.utm_term,
+          utm_content: utm?.utm_content,
+          gclid: utm?.gclid,
+          referrer: utm?.referrer,
+          first_seen_at: utm?.first_seen_at,
+        },
+      }),
+    }).catch(() => {
+      // Ignore tracking errors.
+    });
   };
 
 
@@ -371,4 +414,3 @@ Notice: This lead was routed via static client-side fallback (GitHub Pages deplo
     </div>
   );
 }
-
