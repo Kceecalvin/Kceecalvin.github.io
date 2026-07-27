@@ -1,12 +1,46 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import GlobalBackground from "@/components/GlobalBackground";
 import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
+import UtmCapturer from "@/components/UtmCapturer";
+
+const siteTitle = process.env.NEXT_PUBLIC_SITE_TITLE || "Caldev";
+const siteDescription = "Deterministic logic engineering for financial, physical, and operational systems.";
+const siteDomain = process.env.DOMAIN || "http://localhost:3000";
+const siteUrl = siteDomain.startsWith("http") ? siteDomain : `https://${siteDomain}`;
 
 export const metadata: Metadata = {
-  title: "Caldev | Tier-One Systems Engineering",
-  description: "Deterministic logic engineering for financial, physical, and operational systems.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${siteTitle} | Tier-One Systems Engineering`,
+    template: `%s | ${siteTitle}`,
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: `${siteTitle} | Tier-One Systems Engineering`,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: siteTitle,
+    images: [
+      {
+        url: `${siteUrl}/api/og?title=${encodeURIComponent(siteTitle)}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteTitle} | Tier-One Systems Engineering`,
+    description: siteDescription,
+    images: [`${siteUrl}/api/og?title=${encodeURIComponent(siteTitle)}`],
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +60,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen selection:bg-primary-orange selection:text-white hardware-accelerated text-white overflow-x-hidden">
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ? (
+          <Script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+          />
+        ) : null}
+        <UtmCapturer />
         <SmoothScroll>
           <GlobalBackground />
           <CustomCursor />
@@ -35,4 +77,3 @@ export default function RootLayout({
     </html>
   );
 }
-

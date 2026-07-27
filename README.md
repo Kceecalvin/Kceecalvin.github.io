@@ -32,6 +32,39 @@ npm run dev
 npm run build
 ```
 
+## Growth Stack Environment Variables
+
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
+- `RESEND_LIST_ID` (optional marker value, subscribers are still persisted to `data/subscribers.json`)
+- `DOMAIN`
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`
+- `PLAUSIBLE_API_KEY` (for server-side conversion events)
+- `ADMIN_ENABLED` (`1` enables `/admin/orders`, any other value returns 404)
+- `AWS_S3_BUCKET`, `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (optional signed S3 delivery)
+
+## Manual Cart-Abandon Reminder Trigger
+
+Use this endpoint manually or from a scheduler:
+
+```bash
+curl -X POST https://your-domain.com/api/send-abandon-reminder \\
+  -H "content-type: application/json" \\
+  -d '{"sessionId":"cs_test_123"}'
+```
+
+You can also pass an email:
+
+```bash
+curl -X POST https://your-domain.com/api/send-abandon-reminder \\
+  -H "content-type: application/json" \\
+  -d '{"email":"buyer@example.com"}'
+```
+
+> Admin caveat: `/admin/orders` currently uses an environment guard (`ADMIN_ENABLED=1`) rather than full auth middleware.
+
 ## Deployment
 
 The project is optimized for deployment on **Vercel**.
