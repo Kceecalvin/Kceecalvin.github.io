@@ -1,59 +1,100 @@
-'use client';
-
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
-
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { motion, useScroll } from "framer-motion";
+const links = [
+  { href: "/work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/insights", label: "Notes" },
+];
 export default function Navbar() {
-  const { scrollY } = useScroll();
-  const width = useTransform(scrollY, [0, 100], ["100%", "90%"]);
-  const y = useTransform(scrollY, [0, 100], [0, 20]);
-
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const { scrollYProgress } = useScroll();
   return (
-    <motion.nav 
-      style={{ width, y }}
-      className="fixed top-0 left-1/2 -translate-x-1/2 z-[100] px-6 py-4"
+    <header
+      className="nav"
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && open) {
+          setOpen(false);
+          toggle.current?.focus();
+        }
+      }}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-nav px-4 sm:px-8 py-3 rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-        <Link href="/" className="flex items-center gap-3 sm:gap-6 group">
-          <div className="relative flex items-center justify-center transition-folio">
-            <Image 
-              src="/assets/logo.svg" 
-              alt="Cal dev Logo" 
-              width={60} 
-              height={60} 
-              className="w-10 h-10 sm:w-14 sm:h-14 invert group-hover:scale-110 transition-transform brightness-200"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl sm:text-2xl font-black tracking-[-0.05em] text-white uppercase leading-none">
-              Cal <span className="text-primary-orange">dev</span>
-            </span>
-            <span className="text-[7px] sm:text-[8px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-white/20 uppercase mt-1">Engineering</span>
-          </div>
-        </Link>
-
-        <div className="hidden lg:flex items-center gap-10">
-          <Link href="#about" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">The Practice</Link>
-          <Link href="#services" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Capabilities</Link>
-          <Link href="#portfolio" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Selected Work</Link>
-          <Link href="/insights" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">Insights</Link>
-          <Link href="/cv" className="text-[11px] font-black text-white/50 hover:text-white transition-folio uppercase tracking-[0.2em]">The Principal</Link>
-        </div>
-
-        <Link 
-          href="#contact" 
-          className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-primary-orange hover:text-white transition-folio"
+      <motion.div
+        className="scroll-progress"
+        style={{ scaleX: scrollYProgress }}
+        aria-hidden="true"
+      />
+      <div className="wrap nav-row">
+        <Link
+          className="brand"
+          href="/"
+          aria-label="CALDEV home"
+          onClick={() => setOpen(false)}
         >
-          <span className="hidden md:block">Begin Engagement</span>
-          <div className="w-5 h-5 bg-primary-orange group-hover:bg-white rounded-full flex items-center justify-center transition-folio">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
+          <span className="brand-symbol" aria-hidden="true">
+            c<span>↗</span>
+          </span>
+          <span>
+            cal<span className="accent">dev</span>
+            <small>DESIGN + DEVELOPMENT</small>
+          </span>
         </Link>
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={
+                pathname.startsWith(l.href) && !l.href.includes("#")
+                  ? "page"
+                  : undefined
+              }
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+        <Link href="/contact" className="button nav-cta">
+          Let’s build <ArrowUpRight aria-hidden="true" size={16} />
+        </Link>
+        <button
+          className="menu-toggle"
+          ref={toggle}
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
       </div>
-    </motion.nav>
+      {open && (
+        <nav
+          className="mobile-nav wrap"
+          id="mobile-navigation"
+          aria-label="Mobile navigation"
+        >
+          {[
+            ...links,
+            { href: "/cv", label: "Profile" },
+            { href: "/contact", label: "Start a project" },
+          ].map((l, i) => (
+            <Link href={l.href} key={l.href} onClick={() => setOpen(false)}>
+              <span className="mono" aria-hidden="true">
+                0{i + 1}
+              </span>
+              {l.label}
+              <ArrowUpRight aria-hidden="true" size={20} />
+            </Link>
+          ))}
+        </nav>
+      )}
+    </header>
   );
 }
-

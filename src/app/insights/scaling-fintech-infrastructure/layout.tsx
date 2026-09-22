@@ -1,12 +1,6 @@
-import Navbar from '@/components/Navbar';
-
-export default function InsightLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <main className="min-h-screen bg-black pt-32 px-6">
-      <Navbar />
-      <article className="max-w-4xl mx-auto py-24 prose-invert">
-        {children}
-      </article>
-    </main>
-  );
+import type { Metadata } from "next";
+import ArticleLayout from "@/components/ArticleLayout";
+export const metadata: Metadata = { title: "Event-driven financial systems" };
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <ArticleLayout>{children}</ArticleLayout>;
 }
