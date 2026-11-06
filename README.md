@@ -26,7 +26,7 @@ The API validates project choices, contact fields and length limits, rejects cro
 
 ## Content and assets
 
-Project labels distinguish SeroTix (live product), CEO Manuu (redesign in development), and the request lab (local demo). Screenshots under `public/work` are captured from the actual projects. The request lab's artwork is an existing concept illustration, labelled as such. The existing portrait and original MDX article bodies are preserved. Article narratives and historical results are author-supplied and were not independently verified during this redesign. Review those claims before publication.
+Project labels distinguish AlCOOl (live storefront and staff records; delivery payment and dispatch gated), SeroTix (live product), CEO Manuu (redesign in development), and the request lab (local demo). Screenshots under `public/work` are captured from the actual projects. The request lab's artwork is an existing concept illustration, labelled as such. The existing portrait and original MDX article bodies are preserved. Article narratives and historical results are author-supplied and were not independently verified during this redesign. Review those claims before publication.
 
 Local Lato fonts include their license in `src/app/fonts/LATO-LICENSE.txt`. No remote font dependency. Native scrolling and reduced-motion settings are respected. The canonical URL remains `https://cal-dev.me`.
 

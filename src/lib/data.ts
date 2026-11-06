@@ -25,6 +25,36 @@ export type Project = {
 };
 export const projects: Project[] = [
   {
+    slug: "alcool",
+    title: "AlCOOl",
+    category: "Web platforms",
+    status: "Live store & staff platform",
+    headline: "A neighbourhood shop. A connected operation.",
+    summary:
+      "A distinctive storefront backed by a practical POS, stock records and staff tools for a real shop in Kutus, Kenya.",
+    image: "/work/alcool.png",
+    alt: "AlCOOl’s live November Nyeusi storefront, with a charcoal and gold identity and real bottle photography",
+    stack: ["Python / Flask", "JavaScript", "SQLite", "Docker", "Azure"],
+    role: "Product design, full-stack engineering & deployment",
+    overview:
+      "I built AlCOOl around the work of running a neighbourhood store: recording counter sales, receiving stock, keeping purchase evidence and helping staff see what needs attention. The public storefront gives the same business a considered identity, a searchable catalogue and a delivery request flow. The web platform is deployed on Azure; the Android rider companion remains a pilot.",
+    decisions: [
+      {
+        title: "Make everyday work clear",
+        text: "Role-specific workspaces give owners, counter staff, IT and riders relevant actions. Staff can attach a supplier receipt, confirm quantities actually received and keep prepaid shortages separate from available stock.",
+      },
+      {
+        title: "Keep the records dependable",
+        text: "Stock movements, receipt attribution and audit history preserve the story behind each change. Atomic receiving and duplicate checks protect stock counts, while role and location checks limit access to business records.",
+      },
+      {
+        title: "Design for the shop and the phone",
+        text: "A responsive catalogue, real product imagery and seasonal themes connect the brand to a usable shopping experience. Delivery requests capture landmarks and an optional map pin; payment and dispatch activation remain separate launch controls.",
+      },
+    ],
+    href: "https://al-coo.store",
+  },
+  {
     slug: "serotix",
     title: "SeroTix",
     category: "Web platforms",

@@ -103,7 +103,7 @@ export default async function ProjectPage({
             ? "Concept illustration. The working browser demo is below."
             : p.slug === "ceo-manuu"
               ? "Preview of the portfolio redesign in development."
-              : "SeroTix homepage — an actual product preview."}
+              : `${p.title} homepage — an actual product preview.`}
         </figcaption>
       </figure>
       <section className="wrap section case-overview">
@@ -154,6 +154,42 @@ export default async function ProjectPage({
             <Image
               src="/work/serotix-mobile.png"
               alt="SeroTix homepage on a mobile screen"
+              width={390}
+              height={844}
+              sizes="300px"
+            />
+          </div>
+        </section>
+      )}
+      {p.slug === "alcool" && (
+        <section className="wrap section product-details">
+          <div>
+            <span className="label">REAL SHOP. EVERYDAY SOFTWARE.</span>
+            <h2>From the counter<br />to the customer.</h2>
+            <p>
+              The most useful work happens behind the storefront: keeping stock
+              counts consistent, separating bottle and measured sales, and saving
+              supplier receipts alongside the quantities received. Owners can
+              review records without relying on a message thread or a paper tally.
+            </p>
+            <p>
+              The public experience carries that same clarity onto a phone, with
+              visible sizes, prices, availability and a persistent basket. The
+              November theme changes the atmosphere while keeping shopping actions
+              easy to find.
+            </p>
+            <span className="label">CURRENT RELEASE / NOVEMBER 2026</span>
+            <p>
+              The storefront and staff record keeping are live. Customers can
+              submit delivery requests; online payment and dispatch remain gated
+              for launch. The Android rider app is a pilot, with provider and
+              device acceptance still required before a full delivery rollout.
+            </p>
+          </div>
+          <div className="phone-preview">
+            <Image
+              src="/work/alcool-mobile.png"
+              alt="AlCOOl’s November storefront on a phone, with a clear browse drinks button"
               width={390}
               height={844}
               sizes="300px"
