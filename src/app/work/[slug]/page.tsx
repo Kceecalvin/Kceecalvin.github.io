@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 import ProjectCTA from "@/components/ProjectCTA";
 import RequestLab from "@/components/RequestLab";
+import AlcoolReporting from "@/components/AlcoolReporting";
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
@@ -173,23 +174,23 @@ export default async function ProjectPage({
               review records without relying on a message thread or a paper tally.
             </p>
             <p>
-              The public experience carries that same clarity onto a phone, with
-              visible sizes, prices, availability and a persistent basket. The
-              November theme changes the atmosphere while keeping shopping actions
-              easy to find.
+              The refreshed storefront pairs a full-width navbar with a curved
+              lower edge, the original eye logo and real bottle photography.
+              Search, category filters and a persistent basket keep the next
+              action close on a phone. Seasonal themes share the same controls.
             </p>
             <span className="label">CURRENT RELEASE / NOVEMBER 2026</span>
             <p>
               The storefront and staff record keeping are live. Customers can
-              submit delivery requests; online payment and dispatch remain gated
-              for launch. The Android rider app is a pilot, with provider and
+              submit delivery requests; online payments remain locked for launch.
+              The Android rider app is a pilot, with provider and
               device acceptance still required before a full delivery rollout.
             </p>
           </div>
           <div className="phone-preview">
             <Image
-              src="/work/alcool-mobile.png"
-              alt="AlCOOl’s November storefront on a phone, with a clear browse drinks button"
+              src="/work/alcool-mobile-20261111.png"
+              alt="AlCOOl’s updated phone storefront with its curved lower navbar edge, Shop the shelf button and bottle prices"
               width={390}
               height={844}
               sizes="300px"
@@ -197,6 +198,7 @@ export default async function ProjectPage({
           </div>
         </section>
       )}
+      {p.slug === "alcool" && <AlcoolReporting />}
       {p.slug === "systems-lab" && (
         <div className="wrap section" id="interactive-lab">
           <RequestLab />

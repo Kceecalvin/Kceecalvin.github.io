@@ -31,25 +31,25 @@ export const projects: Project[] = [
     status: "Live store & staff platform",
     headline: "A neighbourhood shop. A connected operation.",
     summary:
-      "A distinctive storefront backed by a practical POS, stock records and staff tools for a real shop in Kutus, Kenya.",
-    image: "/work/alcool.png",
-    alt: "AlCOOl’s live November Nyeusi storefront, with a charcoal and gold identity and real bottle photography",
+      "A premium storefront, practical POS and automatic daily stock reports for a working neighbourhood shop in Kutus, Kenya.",
+    image: "/work/alcool-20261111.png",
+    alt: "AlCOOl’s refreshed November storefront with a full-width curved navbar, editorial typography and real bottle photography",
     stack: ["Python / Flask", "JavaScript", "SQLite", "Docker", "Azure"],
     role: "Product design, full-stack engineering & deployment",
     overview:
-      "I built AlCOOl around the work of running a neighbourhood store: recording counter sales, receiving stock, keeping purchase evidence and helping staff see what needs attention. The public storefront gives the same business a considered identity, a searchable catalogue and a delivery request flow. The web platform is deployed on Azure; the Android rider companion remains a pilot.",
+      "I built AlCOOl around the work of running a neighbourhood store: recording counter sales, receiving stock, keeping purchase evidence and giving owners records they can understand. A luxury-inspired storefront brings the same business onto customers’ phones, while scheduled Excel reports make stock history available outside the app. The Flask platform runs in Docker on Azure; the Android rider companion remains a pilot.",
     decisions: [
       {
         title: "Make everyday work clear",
-        text: "Role-specific workspaces give owners, counter staff, IT and riders relevant actions. Staff can attach a supplier receipt, confirm quantities actually received and keep prepaid shortages separate from available stock.",
+        text: "Role-specific workspaces give owners, counter staff, IT and riders relevant actions. Counter baskets distinguish whole bottles, measured shots and cocktails. Serving-size changes apply to new sales, preserve earlier allocations and ask stale counter screens to refresh.",
       },
       {
         title: "Keep the records dependable",
-        text: "Stock movements, receipt attribution and audit history preserve the story behind each change. Atomic receiving and duplicate checks protect stock counts, while role and location checks limit access to business records.",
+        text: "Supplier receipts, stock movements and audit history explain each change. Daily Excel exports put six clear columns first, keep shots and mixers separate, and preserve detailed records and original files. Verified downloads catch up when the owner’s laptop reconnects.",
       },
       {
         title: "Design for the shop and the phone",
-        text: "A responsive catalogue, real product imagery and seasonal themes connect the brand to a usable shopping experience. Delivery requests capture landmarks and an optional map pin; payment and dispatch activation remain separate launch controls.",
+        text: "A curved full-width navbar, expressive typography, real bottle photography and removable filters make the catalogue easier to explore. Shared styles work across the storefront and staff tools, with native browser motion, reduced-motion support and one stylesheet request per page.",
       },
     ],
     href: "https://al-coo.store",

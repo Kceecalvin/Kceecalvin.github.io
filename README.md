@@ -26,10 +26,10 @@ The API validates project choices, contact fields and length limits, rejects cro
 
 ## Content and assets
 
-Project labels distinguish AlCOOl (live storefront and staff records; delivery payment and dispatch gated), SeroTix (live product), CEO Manuu (redesign in development), and the request lab (local demo). Screenshots under `public/work` are captured from the actual projects. The request lab's artwork is an existing concept illustration, labelled as such. The existing portrait and original MDX article bodies are preserved. Article narratives and historical results are author-supplied and were not independently verified during this redesign. Review those claims before publication.
+Project labels distinguish AlCOOl (live storefront and staff records; online payments gated), SeroTix (live product), CEO Manuu (redesign in development), and the request lab (local demo). Screenshots under `public/work` are captured from the actual projects. AlCOOl includes a clearly labelled illustrative stock table; no actual sales, supplier costs, private workbooks or staff records are published. The request lab's artwork is an existing concept illustration, labelled as such. The existing portrait and original MDX article bodies are preserved. Article narratives and historical results are author-supplied and were not independently verified during this redesign. Review those claims before publication.
 
 Local Lato fonts include their license in `src/app/fonts/LATO-LICENSE.txt`. No remote font dependency. Native scrolling and reduced-motion settings are respected. The canonical URL remains `https://cal-dev.me`.
 
 ## Hosting
 
-The contact endpoint requires a Node-compatible Next.js host. GitHub Pages cannot run the SMTP endpoint. This branch is a local redesign; no production deployment is performed by building or previewing it.
+The contact endpoint requires a Node-compatible Next.js host. GitHub Pages cannot run the SMTP endpoint. Production is connected to the main branch on GitHub through Vercel. Building or previewing locally does not publish changes; verify the deployment after pushing.
