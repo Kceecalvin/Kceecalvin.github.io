@@ -1,3 +1,5 @@
+import "./alcool-reporting.css";
+
 export default function AlcoolReporting() {
   return (
     <section className="wrap section case-reporting" aria-labelledby="reporting-title">
